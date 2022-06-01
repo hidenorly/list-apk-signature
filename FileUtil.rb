@@ -56,7 +56,7 @@ class FileUtil
 			fullPath = path.sub(/\/+$/,"") + "/" + aPath
 			if FileTest.directory?(fullPath) then
 				if dirOnly then
-					if matchKey==nil || ( aPath.match(matchKey)!=nil ) || (fullMatch && fullPath.match(matchKey)) then 
+					if matchKey==nil || ( aPath.match(matchKey)!=nil ) || (fullMatch && fullPath.match(matchKey)) then
 						pathes.push( fullPath )
 					end
 				end
@@ -65,7 +65,7 @@ class FileUtil
 				end
 			else
 				if !dirOnly then
-					if matchKey==nil || ( aPath.match(matchKey)!=nil ) then 
+					if matchKey==nil || ( aPath.match(matchKey)!=nil ) then
 						pathes.push( fullPath )
 					end
 				end

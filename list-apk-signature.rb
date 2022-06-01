@@ -86,7 +86,7 @@ options = {
 opt_parser = OptionParser.new do |opts|
 	opts.banner = "Usage: an apkFile or folder storing apks"
 
-	opts.on("-p", "--pemFolder=", "Specify .pem file folder (You can specify multiply with ,") do |pemFolder|
+	opts.on("-p", "--pemFolder=", "Specify .pem file folder (You can specify multiple paths with ,)") do |pemFolder|
 		options[:pemFolder] = pemFolder
 	end
 
