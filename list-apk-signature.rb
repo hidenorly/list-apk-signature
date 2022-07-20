@@ -14,9 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require './StrUtil'
-require './ExecUtil'
-require './FileUtil'
+require_relative 'StrUtil'
+require_relative 'ExecUtil'
+require_relative 'FileUtil'
 require 'optparse'
 require 'shellwords'
 
@@ -159,18 +159,24 @@ if apkPaths.length then
 	end
 
 	# Output apk/jar's fingerprint
-	reportSignatureApk.each do |sign, apks|
-		case options[:mode]
-		when "per-signature"
-			apkNames = ""
-			apks.each do |anApk|
-				apkNames = apkNames.empty? ? "\"#{anApk}\"" : "\"#{anApk}\", #{apkNames}"
-			end
-			apkNames = apks.length >=2 ? "[ #{apkNames} ]" : apkNames
-			puts "{ \"#{sign}\" : #{apkNames} },"
-		else
-			apks.each do |anApk|
-				puts "{ \"#{sign}\" : \"#{anApk}\" },"
+	if reportSignatureApk.size == 1 then
+		reportSignatureApk.each do |sign, apks|
+			puts "#{sign}"
+		end
+	else
+		reportSignatureApk.each do |sign, apks|
+			case options[:mode]
+			when "per-signature"
+				apkNames = ""
+				apks.each do |anApk|
+					apkNames = apkNames.empty? ? "\"#{anApk}\"" : "\"#{anApk}\", #{apkNames}"
+				end
+				apkNames = apks.length >=2 ? "[ #{apkNames} ]" : apkNames
+				puts "{ \"#{sign}\" : #{apkNames} },"
+			else
+				apks.each do |anApk|
+					puts "{ \"#{sign}\" : \"#{anApk}\" },"
+				end
 			end
 		end
 	end
