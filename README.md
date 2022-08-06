@@ -7,7 +7,7 @@ And this tool result will print with the file name as human understandable signa
 # How to use?
 
 ```
- % ruby list-apk-signature.rb --help
+% ruby list-apk-signature.rb --help
 Usage: an apkFile or folder storing apks
     -p, --pemFolder=                 Specify .pem file folder (You can specify multiple paths with ,)
     -s, --useSHA128                  Use SHA128 fingerprint instead of SHA256
